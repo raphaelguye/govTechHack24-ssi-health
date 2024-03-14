@@ -12,6 +12,7 @@ jobs:
       - name: Azure Container Registry Build
         uses: Azure/acr-build@v1
         with:
+          login-server: acrgovtech24.azurecr.io
           # Admin user credentials for the ACR
           username: acrgovtech24
           password: ${{ secrets.ACR_PASSWORD }}
