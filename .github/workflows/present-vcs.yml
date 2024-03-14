@@ -1,0 +1,21 @@
+on:
+   push:
+     branches:
+       - master
+
+jobs:
+   build:
+     runs-on: ubuntu-latest
+     steps:
+      - name: Azure Container Registry Build
+        uses: Azure/acr-build@v1
+        with:
+          # Admin user credentials for the ACR
+          username: acrgovtech24
+          password: {{ secrets.ACR_PASSWORD }}
+          # The name of the ACR, minus the .azurecr.io
+          registry: acrgovtech24
+          # Repository to use
+          repository: /present-vcs-api
+          # The folder in the Github repo that holds the source
+          folder: /present-vcs-api
