@@ -42,7 +42,7 @@ jobs:
       - name: deploy to production with artifact
         uses: azure/spring-apps-deploy@v1
         with:
-          azure-subscription: ${{ env.AZURE_SUBSCRIPTION }}
+          azure-subscription: d22712a1-56fa-41f3-91fd-a7394f68354c
           action: Deploy
           service-name: spring-springbackend-rla
           app-name: govtech24-springbackend
