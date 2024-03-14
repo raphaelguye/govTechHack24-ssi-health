@@ -9,15 +9,21 @@ jobs:
    build:
      runs-on: ubuntu-latest
      steps:
+
+      - name: Login via Azure CLI
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
       - name: Azure Container Registry Build
         uses: Azure/acr-build@v1
         with:
-          # Admin user credentials for the ACR
-          username: acrgovtech24
-          password: ${{ secrets.ACR_PASSWORD }}
-          # The name of the ACR, minus the .azurecr.io
+          service_principal: a5612f66-dd9c-437c-926e-a3f6e6d86781
+          service_principal_password: ${{ secrets.service_principal_password }}
+          tenant: 5f26d32c-f4e7-4168-bc6d-212851f1a9eb
+          image: gt-vcs-api
+          branch: vcs-api
+          repository: vcs
+          folder: ./present-vcs-api
           registry: acrgovtech24
-          # Repository to use
-          repository: /present-vcs-api
-          # The folder in the Github repo that holds the source
-          folder: /present-vcs-api
+          dockerfile: ./dockerfile
