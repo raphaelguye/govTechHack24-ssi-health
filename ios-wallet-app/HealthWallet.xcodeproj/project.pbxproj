@@ -1,0 +1,601 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9341850D2BA32528000A2793 /* HealthWalletApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9341850C2BA32528000A2793 /* HealthWalletApp.swift */; };
+		9341850F2BA32528000A2793 /* WalletDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9341850E2BA32528000A2793 /* WalletDashboardView.swift */; };
+		934185112BA32528000A2793 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934185102BA32528000A2793 /* Credential.swift */; };
+		934185132BA32528000A2793 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 934185122BA32528000A2793 /* Assets.xcassets */; };
+		934185162BA32528000A2793 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 934185152BA32528000A2793 /* Preview Assets.xcassets */; };
+		934185202BA32529000A2793 /* HealthWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9341851F2BA32529000A2793 /* HealthWalletTests.swift */; };
+		9341852A2BA32529000A2793 /* HealthWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934185292BA32529000A2793 /* HealthWalletUITests.swift */; };
+		9341852C2BA32529000A2793 /* HealthWalletUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9341852B2BA32529000A2793 /* HealthWalletUITestsLaunchTests.swift */; };
+		9360F39C2BA365170066E60F /* Seeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9360F39B2BA365170066E60F /* Seeds.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9341851C2BA32529000A2793 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 934185012BA32528000A2793 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 934185082BA32528000A2793;
+			remoteInfo = HealthWallet;
+		};
+		934185262BA32529000A2793 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 934185012BA32528000A2793 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 934185082BA32528000A2793;
+			remoteInfo = HealthWallet;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		934185092BA32528000A2793 /* HealthWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9341850C2BA32528000A2793 /* HealthWalletApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthWalletApp.swift; sourceTree = "<group>"; };
+		9341850E2BA32528000A2793 /* WalletDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDashboardView.swift; sourceTree = "<group>"; };
+		934185102BA32528000A2793 /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
+		934185122BA32528000A2793 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		934185152BA32528000A2793 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9341851B2BA32529000A2793 /* HealthWalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HealthWalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9341851F2BA32529000A2793 /* HealthWalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthWalletTests.swift; sourceTree = "<group>"; };
+		934185252BA32529000A2793 /* HealthWalletUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HealthWalletUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		934185292BA32529000A2793 /* HealthWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthWalletUITests.swift; sourceTree = "<group>"; };
+		9341852B2BA32529000A2793 /* HealthWalletUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthWalletUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9360F39B2BA365170066E60F /* Seeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seeds.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		934185062BA32528000A2793 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		934185182BA32529000A2793 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		934185222BA32529000A2793 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		934185002BA32528000A2793 = {
+			isa = PBXGroup;
+			children = (
+				9341850B2BA32528000A2793 /* HealthWallet */,
+				9341851E2BA32529000A2793 /* HealthWalletTests */,
+				934185282BA32529000A2793 /* HealthWalletUITests */,
+				9341850A2BA32528000A2793 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9341850A2BA32528000A2793 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				934185092BA32528000A2793 /* HealthWallet.app */,
+				9341851B2BA32529000A2793 /* HealthWalletTests.xctest */,
+				934185252BA32529000A2793 /* HealthWalletUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9341850B2BA32528000A2793 /* HealthWallet */ = {
+			isa = PBXGroup;
+			children = (
+				9341850C2BA32528000A2793 /* HealthWalletApp.swift */,
+				9341850E2BA32528000A2793 /* WalletDashboardView.swift */,
+				934185102BA32528000A2793 /* Credential.swift */,
+				934185122BA32528000A2793 /* Assets.xcassets */,
+				934185142BA32528000A2793 /* Preview Content */,
+				9360F39B2BA365170066E60F /* Seeds.swift */,
+			);
+			path = HealthWallet;
+			sourceTree = "<group>";
+		};
+		934185142BA32528000A2793 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				934185152BA32528000A2793 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9341851E2BA32529000A2793 /* HealthWalletTests */ = {
+			isa = PBXGroup;
+			children = (
+				9341851F2BA32529000A2793 /* HealthWalletTests.swift */,
+			);
+			path = HealthWalletTests;
+			sourceTree = "<group>";
+		};
+		934185282BA32529000A2793 /* HealthWalletUITests */ = {
+			isa = PBXGroup;
+			children = (
+				934185292BA32529000A2793 /* HealthWalletUITests.swift */,
+				9341852B2BA32529000A2793 /* HealthWalletUITestsLaunchTests.swift */,
+			);
+			path = HealthWalletUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		934185082BA32528000A2793 /* HealthWallet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9341852F2BA32529000A2793 /* Build configuration list for PBXNativeTarget "HealthWallet" */;
+			buildPhases = (
+				934185052BA32528000A2793 /* Sources */,
+				934185062BA32528000A2793 /* Frameworks */,
+				934185072BA32528000A2793 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HealthWallet;
+			productName = HealthWallet;
+			productReference = 934185092BA32528000A2793 /* HealthWallet.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9341851A2BA32529000A2793 /* HealthWalletTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 934185322BA32529000A2793 /* Build configuration list for PBXNativeTarget "HealthWalletTests" */;
+			buildPhases = (
+				934185172BA32529000A2793 /* Sources */,
+				934185182BA32529000A2793 /* Frameworks */,
+				934185192BA32529000A2793 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9341851D2BA32529000A2793 /* PBXTargetDependency */,
+			);
+			name = HealthWalletTests;
+			productName = HealthWalletTests;
+			productReference = 9341851B2BA32529000A2793 /* HealthWalletTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		934185242BA32529000A2793 /* HealthWalletUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 934185352BA32529000A2793 /* Build configuration list for PBXNativeTarget "HealthWalletUITests" */;
+			buildPhases = (
+				934185212BA32529000A2793 /* Sources */,
+				934185222BA32529000A2793 /* Frameworks */,
+				934185232BA32529000A2793 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				934185272BA32529000A2793 /* PBXTargetDependency */,
+			);
+			name = HealthWalletUITests;
+			productName = HealthWalletUITests;
+			productReference = 934185252BA32529000A2793 /* HealthWalletUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		934185012BA32528000A2793 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					934185082BA32528000A2793 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					9341851A2BA32529000A2793 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 934185082BA32528000A2793;
+					};
+					934185242BA32529000A2793 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 934185082BA32528000A2793;
+					};
+				};
+			};
+			buildConfigurationList = 934185042BA32528000A2793 /* Build configuration list for PBXProject "HealthWallet" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 934185002BA32528000A2793;
+			productRefGroup = 9341850A2BA32528000A2793 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				934185082BA32528000A2793 /* HealthWallet */,
+				9341851A2BA32529000A2793 /* HealthWalletTests */,
+				934185242BA32529000A2793 /* HealthWalletUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		934185072BA32528000A2793 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				934185162BA32528000A2793 /* Preview Assets.xcassets in Resources */,
+				934185132BA32528000A2793 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		934185192BA32529000A2793 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		934185232BA32529000A2793 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		934185052BA32528000A2793 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9341850F2BA32528000A2793 /* WalletDashboardView.swift in Sources */,
+				934185112BA32528000A2793 /* Credential.swift in Sources */,
+				9360F39C2BA365170066E60F /* Seeds.swift in Sources */,
+				9341850D2BA32528000A2793 /* HealthWalletApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		934185172BA32529000A2793 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				934185202BA32529000A2793 /* HealthWalletTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		934185212BA32529000A2793 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9341852A2BA32529000A2793 /* HealthWalletUITests.swift in Sources */,
+				9341852C2BA32529000A2793 /* HealthWalletUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9341851D2BA32529000A2793 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 934185082BA32528000A2793 /* HealthWallet */;
+			targetProxy = 9341851C2BA32529000A2793 /* PBXContainerItemProxy */;
+		};
+		934185272BA32529000A2793 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 934185082BA32528000A2793 /* HealthWallet */;
+			targetProxy = 934185262BA32529000A2793 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		9341852D2BA32529000A2793 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9341852E2BA32529000A2793 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		934185302BA32529000A2793 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"HealthWallet/Preview Content\"";
+				DEVELOPMENT_TEAM = 2NG6YF3PM2;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.admin.bit.HealthWallet;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		934185312BA32529000A2793 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"HealthWallet/Preview Content\"";
+				DEVELOPMENT_TEAM = 2NG6YF3PM2;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.admin.bit.HealthWallet;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		934185332BA32529000A2793 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2NG6YF3PM2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.admin.bit.HealthWalletTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HealthWallet.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HealthWallet";
+			};
+			name = Debug;
+		};
+		934185342BA32529000A2793 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2NG6YF3PM2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.admin.bit.HealthWalletTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HealthWallet.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HealthWallet";
+			};
+			name = Release;
+		};
+		934185362BA32529000A2793 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2NG6YF3PM2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.admin.bit.HealthWalletUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HealthWallet;
+			};
+			name = Debug;
+		};
+		934185372BA32529000A2793 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2NG6YF3PM2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.admin.bit.HealthWalletUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HealthWallet;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		934185042BA32528000A2793 /* Build configuration list for PBXProject "HealthWallet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9341852D2BA32529000A2793 /* Debug */,
+				9341852E2BA32529000A2793 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9341852F2BA32529000A2793 /* Build configuration list for PBXNativeTarget "HealthWallet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				934185302BA32529000A2793 /* Debug */,
+				934185312BA32529000A2793 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		934185322BA32529000A2793 /* Build configuration list for PBXNativeTarget "HealthWalletTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				934185332BA32529000A2793 /* Debug */,
+				934185342BA32529000A2793 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		934185352BA32529000A2793 /* Build configuration list for PBXNativeTarget "HealthWalletUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				934185362BA32529000A2793 /* Debug */,
+				934185372BA32529000A2793 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 934185012BA32528000A2793 /* Project object */;
+}
