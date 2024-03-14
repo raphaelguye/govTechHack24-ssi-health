@@ -47,7 +47,7 @@ class ContentViewModel: ObservableObject {
       // Group by month and year
       let groupedCredentials = Dictionary(grouping: credentials) { credential -> String in
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy MMMM" // Format: 2020 January
+        formatter.dateFormat = "yyyy-MM"
         return formatter.string(from: credential.issuedAt)
       }
 
