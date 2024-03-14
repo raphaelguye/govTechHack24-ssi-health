@@ -14,23 +14,8 @@ struct ContentView: View {
   // MARK: Internal
 
   var body: some View {
-    ScrollView(.horizontal, showsIndicators: false) {
-      HStack(alignment: .top) {
-        ForEach(viewModel.verifableCredentialsByMonth.keys.sorted(), id: \.self) { key in
-
-          VStack(alignment: .leading) {
-            Text(key.convertDateForHeader()).font(.headline)
-            ForEach(viewModel.verifableCredentialsByMonth[key] ?? [], id: \.id) { credential in
-              VcView(verifiableCredential: credential)
-                .frame(width: 200, height: 100)
-            }
-          }
-          .padding(.vertical)
-        }
-      }
-      .padding()
-    }
-    .navigationTitle("Credentials by Month")
+    content()
+      .ignoresSafeArea(.container, edges: .bottom)
   }
 
   // MARK: Private
@@ -38,6 +23,44 @@ struct ContentView: View {
   private let dateFormatter: DateFormatter
 
   private var viewModel = ContentViewModel()
+
+  @ViewBuilder
+  private func content() -> some View {
+    VStack {
+      HeaderView().padding(EdgeInsets(.init(top: 70, leading: 70, bottom: 0, trailing: 0)))
+      patientHistoryView().padding(.top, 50)
+      Spacer()
+    }
+    .padding(0)
+  }
+
+  @ViewBuilder
+  private func patientHistoryView() -> some View {
+    ScrollView(.horizontal, showsIndicators: false) {
+      VStack {
+        HStack(alignment: .top, spacing: 20) {
+          ForEach(viewModel.verifableCredentialsByMonth.keys.sorted(), id: \.self) { key in
+
+            VStack(alignment: .leading, spacing: 0) {
+              Text(key.convertDateForHeader())
+                .font(.headline)
+                .padding(.bottom, 20)
+                .padding(.leading, 20)
+              ScrollView {
+                VStack(spacing: 20) {
+                  ForEach(viewModel.verifableCredentialsByMonth[key] ?? [], id: \.id) { credential in
+                    CredentialCard(credential: credential)
+                      .padding(.leading, 20)
+                    //                  .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
+                  }
+                }
+              }
+            }
+          }
+        }
+      }.padding(.horizontal, 50)
+    }
+  }
 
 }
 
@@ -87,4 +110,9 @@ extension String {
       return "Invalid date"
     }
   }
+}
+
+#Preview {
+  ContentView()
+
 }
