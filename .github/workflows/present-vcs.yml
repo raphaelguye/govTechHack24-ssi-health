@@ -21,12 +21,9 @@ jobs:
           service_principal: a5612f66-dd9c-437c-926e-a3f6e6d86781
           service_principal_password: ${{ secrets.service_principal_password }}
           tenant: 5f26d32c-f4e7-4168-bc6d-212851f1a9eb
-          image: govTechHack24-ssi-health
+          image: govTechHack24-ssi-health:vcs-api
           dockerfile: ../../dockerfiles/Dockerfile
           branch: main
-          # The name of the ACR, minus the .azurecr.io
-          registry: acrgovtech24
-          # Repository to use
-          repository: https://github.com/needToRoll/govTechHack24-ssi-health
-          # The folder in the Github repo that holds the source
+          repository: https://github.com/needToRoll/govTechHack24-ssi-health.git
           folder: present-vcs-api
+          registry: acrgovtech24
