@@ -9,6 +9,12 @@ jobs:
    build:
      runs-on: ubuntu-latest
      steps:
+
+      - name: Login via Azure CLI
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
       - name: Azure Container Registry Build
         uses: Azure/acr-build@v1
         with:
