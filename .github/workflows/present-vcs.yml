@@ -12,7 +12,7 @@ jobs:
         with:
           # Admin user credentials for the ACR
           username: acrgovtech24
-          password: {{ secrets.ACR_PASSWORD }}
+          password: ${{ secrets.ACR_PASSWORD }}
           # The name of the ACR, minus the .azurecr.io
           registry: acrgovtech24
           # Repository to use
