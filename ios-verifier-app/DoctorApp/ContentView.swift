@@ -4,13 +4,6 @@ import SwiftUI
 
 struct ContentView: View {
 
-  // MARK: Lifecycle
-
-  init() {
-    dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy MMMM"
-  }
-
   // MARK: Internal
 
   var body: some View {
@@ -19,8 +12,6 @@ struct ContentView: View {
   }
 
   // MARK: Private
-
-  private let dateFormatter: DateFormatter
 
   private var viewModel = ContentViewModel()
 
@@ -51,7 +42,6 @@ struct ContentView: View {
                   ForEach(viewModel.verifableCredentialsByMonth[key] ?? [], id: \.id) { credential in
                     CredentialCard(credential: credential)
                       .padding(.leading, 20)
-                    //                  .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                   }
                 }
               }

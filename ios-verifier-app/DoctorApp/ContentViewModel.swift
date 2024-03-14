@@ -5,32 +5,12 @@ class ContentViewModel: ObservableObject {
   // MARK: Lifecycle
 
   init() {
-    verifiableCredentials = loadVerifiableCredentials()
     verifableCredentialsByMonth = loadVerifiableCredentialsGroupedByMonth()
   }
 
   // MARK: Internal
 
-  @Published var verifiableCredentials: [Credential] = []
   @Published var verifableCredentialsByMonth: [String: [Credential]] = [:]
-
-  func loadVerifiableCredentials() -> [Credential] {
-    guard let url = Bundle.main.url(forResource: "verifiableCredentials", withExtension: "json") else {
-      print("VerifiableCredentials JSON file not found")
-      return []
-    }
-
-    do {
-      let data = try Data(contentsOf: url)
-      let decoder = JSONDecoder()
-      decoder.dateDecodingStrategy = .iso8601
-      let credentials = try decoder.decode([Credential].self, from: data)
-      return credentials.sorted { $0.issuedAt < $1.issuedAt }
-    } catch {
-      print("Error decoding VerifiableCredentials JSON: \(error)")
-      return []
-    }
-  }
 
   func loadVerifiableCredentialsGroupedByMonth() -> [String: [Credential]] {
     guard let url = Bundle.main.url(forResource: "verifiableCredentials", withExtension: "json") else {

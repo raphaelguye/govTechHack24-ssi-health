@@ -19,7 +19,7 @@ final class Credential: Identifiable, Codable {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     id = try container.decode(UUID.self, forKey: .id)
     type = try container.decode(CredentialType.self, forKey: .type)
-    issuedAt = Date.generateRandomDate() ?? Date.now
+    issuedAt = try container.decode(Date.self, forKey: .issuedAt)
 
     let contentContainer = try container.nestedContainer(keyedBy: DynamicCodingKeys.self, forKey: .content)
     var contentDict = [String: String]()
@@ -167,6 +167,5 @@ extension Date {
     let randomTimeInterval = Double.random(in: timeIntervalStart...timeIntervalEnd)
 
     return Date(timeIntervalSince1970: randomTimeInterval)
-//    return endDateComponents.date
   }
 }

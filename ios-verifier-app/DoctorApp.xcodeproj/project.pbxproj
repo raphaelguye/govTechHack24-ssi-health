@@ -14,7 +14,6 @@
 		53F4AD4A2BA3359E00A153F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53F4AD492BA3359E00A153F9 /* Assets.xcassets */; };
 		53F4AD4E2BA3359E00A153F9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53F4AD4D2BA3359E00A153F9 /* Preview Assets.xcassets */; };
 		53F4AD552BA33A0F00A153F9 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F4AD542BA33A0F00A153F9 /* Credential.swift */; };
-		53F4AD582BA33E4000A153F9 /* medications.json in Resources */ = {isa = PBXBuildFile; fileRef = 53F4AD572BA33E4000A153F9 /* medications.json */; };
 		53F4AD5A2BA33EBC00A153F9 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F4AD592BA33EBC00A153F9 /* ContentViewModel.swift */; };
 		53F4AD5E2BA34FF900A153F9 /* verifiableCredentials.json in Resources */ = {isa = PBXBuildFile; fileRef = 53F4AD5D2BA34FF900A153F9 /* verifiableCredentials.json */; };
 /* End PBXBuildFile section */
@@ -29,7 +28,6 @@
 		53F4AD4B2BA3359E00A153F9 /* DoctorApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DoctorApp.entitlements; sourceTree = "<group>"; };
 		53F4AD4D2BA3359E00A153F9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		53F4AD542BA33A0F00A153F9 /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
-		53F4AD572BA33E4000A153F9 /* medications.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = medications.json; sourceTree = "<group>"; };
 		53F4AD592BA33EBC00A153F9 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		53F4AD5D2BA34FF900A153F9 /* verifiableCredentials.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = verifiableCredentials.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,7 +87,6 @@
 		53F4AD562BA33E2A00A153F9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				53F4AD572BA33E4000A153F9 /* medications.json */,
 				53F4AD5D2BA34FF900A153F9 /* verifiableCredentials.json */,
 			);
 			path = Resources;
@@ -153,7 +150,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53F4AD582BA33E4000A153F9 /* medications.json in Resources */,
 				53F4AD5E2BA34FF900A153F9 /* verifiableCredentials.json in Resources */,
 				53F4AD4E2BA3359E00A153F9 /* Preview Assets.xcassets in Resources */,
 				53F4AD4A2BA3359E00A153F9 /* Assets.xcassets in Resources */,
