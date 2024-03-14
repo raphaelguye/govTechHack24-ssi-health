@@ -24,6 +24,6 @@ jobs:
           image: govTechHack24-ssi-health:vcs-api
           dockerfile: ../../dockerfiles/Dockerfile
           branch: main
-          repository: https://github.com/needToRoll/govTechHack24-ssi-health.git
+          repository: vcs
           folder: present-vcs-api
           registry: acrgovtech24
