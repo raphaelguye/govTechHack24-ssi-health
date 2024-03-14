@@ -9,9 +9,9 @@ final class Credential: Identifiable, Codable {
 
   // MARK: Lifecycle
 
-  init(id: UUID = .init(), name: String, type: CredentialType, issuedAt: Date = Date(), content: [String: String] = [:]) {
+  init(id: UUID = .init(), type: CredentialType, issuedAt: Date = Date(), content: [String: String] = [:]) {
     self.id = id
-    self.type = type
+    self.type = type.rawValue
     self.issuedAt = issuedAt
     self.content = content
   }
@@ -19,7 +19,7 @@ final class Credential: Identifiable, Codable {
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     id = try container.decode(UUID.self, forKey: .id)
-    type = try container.decode(CredentialType.self, forKey: .type)
+    type = try container.decode(String.self, forKey: .type)
     issuedAt = try container.decode(Date.self, forKey: .issuedAt)
 
     let contentContainer = try container.nestedContainer(keyedBy: DynamicCodingKeys.self, forKey: .content)
@@ -46,7 +46,7 @@ final class Credential: Identifiable, Codable {
   // MARK: Internal
 
   @Attribute(.unique) var id: UUID
-  var type: CredentialType
+  var type: String
   var issuedAt: Date
   let content: [String: String]
 
@@ -71,12 +71,21 @@ final class Credential: Identifiable, Codable {
 // MARK: - CredentialType
 
 enum CredentialType: String, Codable, CaseIterable {
+  case all = "All"
   case insurance = "Insurance"
   case allergy = "AllergyIntolerance"
   case diagnosis = "Diagnosis"
   case medication = "Medication"
 
   // MARK: Internal
+
+  static var allowedCases: [CredentialType] {
+    [.allergy, .diagnosis, .medication]
+  }
+
+  static var searchableCases: [CredentialType] {
+    [.all, .allergy, .diagnosis, .medication]
+  }
 
   var displayName: String {
     switch self {
@@ -91,6 +100,7 @@ enum CredentialType: String, Codable, CaseIterable {
     case .allergy: .orange
     case .diagnosis: .purple
     case .medication: .blue
+    default: .red
     }
   }
 
@@ -100,8 +110,10 @@ enum CredentialType: String, Codable, CaseIterable {
     case .allergy: Image(systemName: "allergens")
     case .diagnosis: Image(systemName: "checkmark.seal")
     case .medication: Image(systemName: "hazardsign")
+    default: Image(systemName: "square")
     }
   }
+
 }
 
 // MARK: - DynamicCodingKeys

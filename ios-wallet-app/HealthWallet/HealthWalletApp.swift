@@ -19,8 +19,10 @@ struct HealthWalletApp: App {
 
   var body: some Scene {
     WindowGroup {
-      ContentView()
+      NavigationStack {
+        WalletView()
+      }
     }
-    .modelContainer(sharedModelContainer)
+    .modelContainer(Seeds.previewContainer)
   }
 }

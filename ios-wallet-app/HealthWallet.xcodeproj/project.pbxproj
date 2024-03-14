@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		932FA8C92BA37E1100B3B900 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932FA8C82BA37E1100B3B900 /* Date+Extension.swift */; };
+		932FA8CB2BA3831900B3B900 /* CredentialCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932FA8CA2BA3831900B3B900 /* CredentialCard.swift */; };
 		9341850D2BA32528000A2793 /* HealthWalletApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9341850C2BA32528000A2793 /* HealthWalletApp.swift */; };
-		9341850F2BA32528000A2793 /* WalletDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9341850E2BA32528000A2793 /* WalletDashboardView.swift */; };
+		9341850F2BA32528000A2793 /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9341850E2BA32528000A2793 /* WalletView.swift */; };
 		934185112BA32528000A2793 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934185102BA32528000A2793 /* Credential.swift */; };
 		934185132BA32528000A2793 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 934185122BA32528000A2793 /* Assets.xcassets */; };
 		934185162BA32528000A2793 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 934185152BA32528000A2793 /* Preview Assets.xcassets */; };
@@ -36,9 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		932FA8C82BA37E1100B3B900 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		932FA8CA2BA3831900B3B900 /* CredentialCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialCard.swift; sourceTree = "<group>"; };
 		934185092BA32528000A2793 /* HealthWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9341850C2BA32528000A2793 /* HealthWalletApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthWalletApp.swift; sourceTree = "<group>"; };
-		9341850E2BA32528000A2793 /* WalletDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDashboardView.swift; sourceTree = "<group>"; };
+		9341850E2BA32528000A2793 /* WalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
 		934185102BA32528000A2793 /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
 		934185122BA32528000A2793 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		934185152BA32528000A2793 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -99,11 +103,13 @@
 			isa = PBXGroup;
 			children = (
 				9341850C2BA32528000A2793 /* HealthWalletApp.swift */,
-				9341850E2BA32528000A2793 /* WalletDashboardView.swift */,
+				9341850E2BA32528000A2793 /* WalletView.swift */,
 				934185102BA32528000A2793 /* Credential.swift */,
+				932FA8CA2BA3831900B3B900 /* CredentialCard.swift */,
 				934185122BA32528000A2793 /* Assets.xcassets */,
 				934185142BA32528000A2793 /* Preview Content */,
 				9360F39B2BA365170066E60F /* Seeds.swift */,
+				932FA8C82BA37E1100B3B900 /* Date+Extension.swift */,
 			);
 			path = HealthWallet;
 			sourceTree = "<group>";
@@ -149,6 +155,8 @@
 			dependencies = (
 			);
 			name = HealthWallet;
+			packageProductDependencies = (
+			);
 			productName = HealthWallet;
 			productReference = 934185092BA32528000A2793 /* HealthWallet.app */;
 			productType = "com.apple.product-type.application";
@@ -221,6 +229,8 @@
 				Base,
 			);
 			mainGroup = 934185002BA32528000A2793;
+			packageReferences = (
+			);
 			productRefGroup = 9341850A2BA32528000A2793 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -263,7 +273,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9341850F2BA32528000A2793 /* WalletDashboardView.swift in Sources */,
+				932FA8CB2BA3831900B3B900 /* CredentialCard.swift in Sources */,
+				932FA8C92BA37E1100B3B900 /* Date+Extension.swift in Sources */,
+				9341850F2BA32528000A2793 /* WalletView.swift in Sources */,
 				934185112BA32528000A2793 /* Credential.swift in Sources */,
 				9360F39C2BA365170066E60F /* Seeds.swift in Sources */,
 				9341850D2BA32528000A2793 /* HealthWalletApp.swift in Sources */,
