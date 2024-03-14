@@ -3,7 +3,7 @@ name: Present VCS API
 on:
    push:
      branches:
-       - master
+       - vcs-api
 
 jobs:
    build:
