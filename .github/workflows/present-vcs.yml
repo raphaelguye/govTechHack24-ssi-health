@@ -26,3 +26,4 @@ jobs:
           repository: vcs
           folder: ./present-vcs-api
           registry: acrgovtech24
+          dockerfile: ./dockerfile
