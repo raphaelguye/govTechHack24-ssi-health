@@ -1,12 +1,12 @@
 package ch.govtech.govtech24issuermock.model
 
-import java.util.*
+import java.time.LocalDate
 
 
 data class HealthInsuranceCard(
     val cardNumber: String,
     val holderName: String,
-    val dateOfBirth: Date,
+    val dateOfBirth: LocalDate,
     val gender: Gender,
     val insuranceCompany: String
     ) {

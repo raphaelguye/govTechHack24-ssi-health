@@ -1,6 +1,8 @@
 package ch.govtech.govtech24issuermock.service
 
 import ch.govtech.govtech24issuermock.model.Credential
+import ch.govtech.govtech24issuermock.model.Diagnosis
+import ch.govtech.govtech24issuermock.model.HealthInsuranceCard
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
@@ -17,7 +19,7 @@ class MockDataService {
 
     companion object {
         val mapper: ObjectMapper = jacksonObjectMapper().registerModule(JavaTimeModule())
-        val healthRecords: List<Credential> = mapper.readValue(MockDataService.Companion::class.java.classLoader.getResourceAsStream("/mock.json")!!)
+        val healthRecords: List<Credential> = mapper.readValue(MockDataService.Companion::class.java.classLoader.getResourceAsStream("mock.json")!!)
 
     }
     fun getAllCredentials(): List<Credential> {
@@ -48,8 +50,17 @@ class MockDataService {
         return ZonedDateTime.of(localDateTime, ZoneId.of("UTC"))
     }
 
-    fun getCredentialOfType() {
+    fun getCredentialOfTypeDiagnosis(): Diagnosis {
+        var new = healthRecords.filter { it.type == "Diagnosis" }.first() as Diagnosis
+        var start: ZonedDateTime = ZonedDateTime.of(LocalDate.ofYearDay(2020, 1), LocalTime.MIDNIGHT, ZoneId.of("UTC"))
+        var end: ZonedDateTime = ZonedDateTime.now();
+        new.id = UUID.randomUUID().toString()
+        new.issueDate = getRandomDateTime(start, end)
+        return new;
+    }
 
+    fun getInsuranceCard(): HealthInsuranceCard {
+        return HealthInsuranceCard("756.6420.4864.57", "John Doe", LocalDate.of(1985, 8, 5),HealthInsuranceCard.Gender.Male, "SWICA")
     }
 }
 
