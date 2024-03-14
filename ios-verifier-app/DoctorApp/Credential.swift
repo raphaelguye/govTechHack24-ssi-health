@@ -49,6 +49,24 @@ final class Credential: Identifiable, Codable {
   var issuedAt: Date
   let content: [String: String]
 
+  var displayName: String {
+    switch type {
+    case .insurance: "Helsana"
+    case .allergy: content["allergyDescription"] ?? ""
+    case .diagnosis: content["diagnosisDescription"] ?? ""
+    case .medication: content["medicationName"] ?? ""
+    }
+  }
+
+  var displayCode: String {
+    switch type {
+    case .insurance: "BASIC"
+    case .allergy: content["allergyCode"] ?? ""
+    case .diagnosis: content["diagnosisCode"] ?? ""
+    case .medication: content["medicationCode"] ?? ""
+    }
+  }
+
   func encode(to encoder: Encoder) throws {
     var container = encoder.container(keyedBy: CodingKeys.self)
     try container.encode(type, forKey: .type)
@@ -149,5 +167,6 @@ extension Date {
     let randomTimeInterval = Double.random(in: timeIntervalStart...timeIntervalEnd)
 
     return Date(timeIntervalSince1970: randomTimeInterval)
+//    return endDateComponents.date
   }
 }
