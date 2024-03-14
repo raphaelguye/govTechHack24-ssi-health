@@ -17,7 +17,7 @@ class MockDataService {
 
     companion object {
         val mapper: ObjectMapper = jacksonObjectMapper().registerModule(JavaTimeModule())
-        val healthRecords: List<Credential> = mapper.readValue(ClassPathResource("mock.json").file)
+        val healthRecords: List<Credential> = mapper.readValue(ClassPathResource("mock.json").inputStream)
 
     }
     fun getAllCredentials(): List<Credential> {
