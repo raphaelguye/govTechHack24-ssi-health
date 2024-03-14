@@ -37,7 +37,8 @@ jobs:
         run: chmod +x ./mock-issuer/gradlew
         
       - name: maven build, clean
-        run: ./mock-issuer/gradlew bootJar
+        working-directory: mock-issuer
+        run: ./gradlew bootJar
         
       - name: Login via Azure CLI
         uses: azure/login@v1
