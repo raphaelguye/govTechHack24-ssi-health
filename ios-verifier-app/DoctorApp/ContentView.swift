@@ -25,7 +25,7 @@ struct ContentView: View {
   @ViewBuilder
   private func content() -> some View {
     VStack {
-      HeaderView().padding(EdgeInsets(.init(top: 70, leading: 70, bottom: 0, trailing: 0)))
+      HeaderView().padding(EdgeInsets(.init(top: 70, leading: 60, bottom: 0, trailing: 0)))
       patientHistoryView().padding(.top, 50)
       Spacer()
     }
