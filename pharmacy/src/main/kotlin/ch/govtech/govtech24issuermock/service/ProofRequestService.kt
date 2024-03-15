@@ -33,7 +33,7 @@ class ProofRequestService(
         return proofRepository.save(pr).content
     }
 
-    fun getById(id: String): ProofRequestContent {
-        return proofRepository.findById(id).get().content
+    fun getById(id: String): ProofRequest {
+        return proofRepository.findById(id).get()
     }
 }

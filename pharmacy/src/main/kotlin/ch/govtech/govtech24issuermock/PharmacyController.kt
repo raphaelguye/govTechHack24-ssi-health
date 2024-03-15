@@ -7,6 +7,7 @@ import ch.govtech.govtech24issuermock.service.QrImageService
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 
 
@@ -25,6 +26,14 @@ class PharmacyController(val mockDataService: MockDataService, val proofRequestS
     fun showMedications(model: Model): Any {
         // Assuming you have a method to fetch JSON data and parse it into a List<Medication>
         val medications = fetchMedicationsFromJson()
+        model.addAttribute("medications", medications)
+        model.addAttribute("person", mockDataService.getInsuranceCard())
+        return "medication"
+    }
+    @GetMapping("/medications/{id}")
+    fun showMedications(model: Model, @PathVariable id: String): Any {
+        // Assuming you have a method to fetch JSON data and parse it into a List<Medication>
+        val medications = proofRequestService.getById(id).responses
         model.addAttribute("medications", medications)
         model.addAttribute("person", mockDataService.getInsuranceCard())
         return "medication"

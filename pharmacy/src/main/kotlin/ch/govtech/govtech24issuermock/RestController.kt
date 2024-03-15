@@ -21,7 +21,7 @@ class RestController(val proofRequestService: ProofRequestService) {
 
     @GetMapping("/pr/{id}")
     fun createProofRequest(@PathVariable id: String): ProofRequestContent {
-        return proofRequestService.createNewProofRequest().content
+        return proofRequestService.getById(id).content
     }
 
     @PostMapping("/medication/{id}")
