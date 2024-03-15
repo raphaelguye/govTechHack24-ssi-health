@@ -25,7 +25,8 @@ class ContentViewModel: ObservableObject {
       verifableCredentialsByMonth = [:]
       return
     }
-    try await verifableCredentialsByMonth = getVerifiableCredentials(token: token)
+    let foo = try await getVerifiableCredentials(token: token)
+    verifableCredentialsByMonth = foo
 //    verifableCredentialsByMonth = loadVerifiableCredentials()
 
   }

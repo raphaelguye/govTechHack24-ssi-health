@@ -19,7 +19,11 @@ final class Credential: Identifiable, Codable {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     id = try container.decode(String.self, forKey: .id)
     type = try container.decode(CredentialType.self, forKey: .type)
-    issuedAt = try container.decode(Date.self, forKey: .issuedAt)
+    do {
+      issuedAt = try container.decode(Date.self, forKey: .issuedAt)
+    } catch {
+      issuedAt = Date.now
+    }
 
     let contentContainer = try container.nestedContainer(keyedBy: DynamicCodingKeys.self, forKey: .content)
     var contentDict = [String: String]()
@@ -79,7 +83,7 @@ final class Credential: Identifiable, Codable {
   private enum CodingKeys: String, CodingKey {
     case id
     case type
-    case issuedAt = "issue_date"
+    case issuedAt = "issueDate"
     case content
   }
 
