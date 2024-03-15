@@ -8,26 +8,26 @@ import os
 app = FastAPI()
 
 # Use environment variables for sensitive information
-DIRECTUS_URL = os.getenv("DIRECTUS_URL", "https://directustesting.proudcoast-33470e41.switzerlandnorth.azurecontainerapps.io")
-EMAIL = os.getenv("EMAIL", "admin@admin.com")
-PASSWORD = os.getenv("PASSWORD", "d1r3ctu5")
+directusUrl = os.getenv("DIRECTUS_URL", "https://directustesting.proudcoast-33470e41.switzerlandnorth.azurecontainerapps.io")
+email = os.getenv("EMAIL", "admin@admin.com")
+password = os.getenv("PASSWORD", "d1r3ctu5")
 
 # Authentication function
-def authenticate_directus() -> str:
-    auth_endpoint = f"{DIRECTUS_URL}/auth/login"
-    payload = {"email": EMAIL, "password": PASSWORD}
+def authenticateDirectus() -> str:
+    authEndpoint = f"{directusUrl}/auth/login"
+    payload = {"email": email, "password": password}
     headers = {"Content-Type": "application/json"}
-    response = requests.post(auth_endpoint, json=payload, headers=headers)
+    response = requests.post(authEndpoint, json=payload, headers=headers)
     if response.status_code == 200:
         return response.json()['data']['access_token']
     else:
         raise HTTPException(status_code=400, detail="Authentication failed")
 
 # Function to create an item in a Directus collection
-def create_item_in_collection(token: str, collection_name: str, item_data: dict) -> dict:
-    create_endpoint = f"{DIRECTUS_URL}/items/{collection_name}"
+def createItemInCollection(token: str, collectionName: str, itemData: dict) -> dict:
+    createEndpoint = f"{directusUrl}/items/{collectionName}"
     headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
-    response = requests.post(create_endpoint, json=item_data, headers=headers)
+    response = requests.post(createEndpoint, json=itemData, headers=headers)
     if response.status_code in [200, 201]:
         return response.json()['data']
     else:
@@ -38,100 +38,101 @@ class HealthRecordContent(BaseModel):
     pass
 
 class AllergyContent(HealthRecordContent):
-    allergy_code: str
-    allergy_description: str
-    reaction_code: str
+    allergyCode: str
+    allergyDescription: str
+    reactionCode: str
     severity: str
 
 class MedicationContent(HealthRecordContent):
-    medication_code: str
-    medication_name: str
-    dosage_instruction: str
+    medicationCode: str
+    medicationName: str
+    dosageInstruction: str
 
 class DiagnosisContent(HealthRecordContent):
-    diagnosis_code: str
-    diagnosis_description: str
+    diagnosisCode: str
+    diagnosisDescription: str
 
 class VerifiableCredential(BaseModel):
     id: str
     type: str
-    issue_date: datetime
+    issueDate: str
     content: Union[AllergyContent, MedicationContent, DiagnosisContent]
 
 class MedicationRecord(BaseModel):
     type: str
-    date_from: str
-    date_to: str
-    present_url: str
+    dateFrom: str
+    dateTo: str
+    presentUrl: str
 
 
 # Cyclic data for demonstration
-record_types = ["Medication", "Diagnosis", "AllergyInteolerance"]
+recordTypes = ["Medication", "Diagnosis", "AllergyIntolerance"]
 
-demo_dates = [
+demoDates = [
     (datetime(2021, 1, 1), datetime(2022, 12, 31)),
-    (datetime(2022, 1, 1), None),  # date_to is None for demonstration purposes
+    (datetime(2022, 1, 1), None),  # dateTo is None for demonstration purposes
     (datetime(2023, 1, 1), datetime(2024, 12, 31)),
     (None, None),  # Both dates are None
 ]
 
 # Converting datetime objects to ISO format and handling None values
-iso_dates = [
-    (start.isoformat() + "Z" if start else None, end.isoformat() + "Z" if end else None) for start, end in demo_dates
+isoDates = [
+    (start.isoformat() + "Z" if start else None, end.isoformat() + "Z" if end else None) for start, end in demoDates
 ]
 
-current_type_index = -1
-current_date_index = -1
+currentTypeIndex = -1
+currentDateIndex = -1
 
 class DynamicRecord(BaseModel):
     type: str
-    date_from: Optional[datetime] = None
-    date_to: Optional[datetime] = None
-    present_url: str
+    dateFrom: Optional[datetime] = None
+    dateTo: Optional[datetime] = None
+    presentUrl: str
 
 class Record(BaseModel):
     type: str
-    date_from: datetime = Field(default_factory=datetime.now)
-    date_to: Optional[datetime] = Field(default_factory=datetime.now)
-    present_url: str
+    dateFrom: datetime = Field(default_factory=datetime.now)
+    dateTo: Optional[datetime] = Field(default_factory=datetime.now)
+    presentUrl: str
 
 
 # Route to handle presentation of Verifiable Credentials
 @app.post("/present")
 def presentation(vcs: List[VerifiableCredential]):
-    token = authenticate_directus()
+    token = authenticateDirectus()
+    print(vcs)
     try:
-        json_output = {
+        jsonOutput = {
             'vc': [{
                 'id': vc.id,
                 'type': vc.type,
-                'issue_date': vc.issue_date.isoformat(),
+                'issueDate': vc.issueDate,
                 'content': vc.content.dict()
             } for vc in vcs]
         }
     except ValidationError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
-    created_vc = create_item_in_collection(token, "vcs", json_output)
-    return {"message": "Verifiable Credentials presented successfully!", "data": created_vc}
+    createdVc = createItemInCollection(token, "vcs", jsonOutput)
+    return {"message": "Verifiable Credentials presented successfully!", "data": createdVc}
 
 @app.get("/doctorRequest")
-def get_doctorRequest():
-    global current_type_index, current_date_index
-    current_type_index = (current_type_index + 1) % len(record_types)
-    current_date_index = (current_date_index + 1) % len(iso_dates)
+def getDoctorRequest():
+    global currentTypeIndex, currentDateIndex
+    currentTypeIndex = (currentTypeIndex + 1) % len(recordTypes)
+    currentDateIndex = (currentDateIndex + 1) % len(isoDates)
 
-    record_type = record_types[current_type_index]
-    date_from, date_to = iso_dates[current_date_index]
+    recordType = recordTypes[currentTypeIndex]
+    dateFrom, dateTo = isoDates[currentDateIndex]
 
-    record_data = {
-        "type": record_type,
-        "date_from": date_from if date_from else None,
-        "date_to": date_to if date_to else None,
-        "present_url": f"{os.getenv('DIRECTUS_URL', 'https://directustesting.proudcoast-33470e41.switzerlandnorth.azurecontainerapps.io')}/present",
+    recordData = {
+        "type": recordType,
+        "dateFrom": dateFrom if dateFrom else None,
+        "dateTo": dateTo if dateTo else None,
+        "presentUrl": f"{os.getenv('DIRECTUS_URL', 'https://directustesting.proudcoast-33470e41.switzerlandnorth.azurecontainerapps.io')}/present",
     }
 
-    return record_data
+    return recordData
 
 # Utility function for local development and testing
 if __name__ == "__main__":
