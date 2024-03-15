@@ -70,12 +70,9 @@ class ContentViewModel: ObservableObject {
       formatter.dateFormat = "yyyy-MM"
       return formatter.string(from: credential.issuedAt)
     }
-
-    // Optional: Sort each group by issuedAt, if needed
     let sortedGroupedCredentials = groupedCredentials.mapValues { credentials in
       credentials.sorted { $0.issuedAt < $1.issuedAt }
     }
-
     return sortedGroupedCredentials
   }
 

@@ -45,6 +45,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		532859A72BA45AE700ECE14B /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				53F4AD472BA3359D00A153F9 /* ContentView.swift */,
+				53F4AD592BA33EBC00A153F9 /* ContentViewModel.swift */,
+				535C57DD2BA39F52002317F7 /* CredentialDetailView.swift */,
+				53B403B42BA3888F000EC68B /* HeaderView.swift */,
+				53B403B22BA37642000EC68B /* CredentialCardView.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		532859A82BA45B7900ECE14B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				53F4AD542BA33A0F00A153F9 /* Credential.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		53F4AD392BA3359D00A153F9 = {
 			isa = PBXGroup;
 			children = (
@@ -64,14 +84,10 @@
 		53F4AD442BA3359D00A153F9 /* DoctorApp */ = {
 			isa = PBXGroup;
 			children = (
+				532859A82BA45B7900ECE14B /* Model */,
+				532859A72BA45AE700ECE14B /* Presentation */,
 				53F4AD562BA33E2A00A153F9 /* Resources */,
 				53F4AD452BA3359D00A153F9 /* DoctorAppApp.swift */,
-				53F4AD472BA3359D00A153F9 /* ContentView.swift */,
-				535C57DD2BA39F52002317F7 /* CredentialDetailView.swift */,
-				53B403B42BA3888F000EC68B /* HeaderView.swift */,
-				53B403B22BA37642000EC68B /* CredentialCardView.swift */,
-				53F4AD592BA33EBC00A153F9 /* ContentViewModel.swift */,
-				53F4AD542BA33A0F00A153F9 /* Credential.swift */,
 				53F4AD492BA3359E00A153F9 /* Assets.xcassets */,
 				53F4AD4B2BA3359E00A153F9 /* DoctorApp.entitlements */,
 				53F4AD4C2BA3359E00A153F9 /* Preview Content */,

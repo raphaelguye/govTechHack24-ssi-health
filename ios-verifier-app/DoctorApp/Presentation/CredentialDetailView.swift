@@ -42,10 +42,7 @@ struct CredentialDetailView: View {
   @ViewBuilder
   private func divider() -> some View {
     Divider()
-      .padding(EdgeInsets(top: -8, leading: 16, bottom: 16, trailing: 16))
-//      .padding(.leading)
-//      .padding(.bottom, 16)
-//      .padding(.top, -8)
+      .padding(EdgeInsets(top: -8, leading: 16, bottom: 16, trailing: 0))
   }
 
   @ViewBuilder
@@ -59,6 +56,7 @@ struct CredentialDetailView: View {
         .lineLimit(1)
       Spacer()
       Image(systemName: "shield.lefthalf.filled.badge.checkmark")
+        .renderingMode(.original)
         .font(.system(size: 30))
         .foregroundColor(.primary)
     }

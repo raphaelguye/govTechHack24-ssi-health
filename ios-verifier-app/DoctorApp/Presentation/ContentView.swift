@@ -72,25 +72,6 @@ struct ContentView: View {
 
 }
 
-// MARK: - VcView
-
-struct VcView: View {
-
-  init(verifiableCredential: Credential) {
-    self.verifiableCredential = verifiableCredential
-  }
-
-  private let verifiableCredential: Credential
-
-  var body: some View {
-    ZStack {
-      Rectangle()
-        .fill(verifiableCredential.type.backgroundColor)
-      Text(verifiableCredential.type.displayName)
-    }
-  }
-}
-
 // MARK: - SeparatorView
 
 struct SeparatorView: View {
@@ -103,8 +84,7 @@ struct SeparatorView: View {
 }
 
 extension String {
-
-  func convertDateForHeader() -> String {
+  fileprivate func convertDateForHeader() -> String {
     let inputFormatter = DateFormatter()
     inputFormatter.dateFormat = "yyyy-MM"
 
@@ -118,13 +98,6 @@ extension String {
       return "Invalid date"
     }
   }
-}
-
-#Preview {
-  ContentView(
-    viewModel: ContentViewModel(verifableCredentialsByMonth: [
-      "2024-02": [Credential.sample(), Credential.sample(), Credential.sample(), Credential.sample(), Credential.sample()],
-    ]))
 }
 
 #Preview {
