@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel, ValidationError
-from typing import List, Union
+from typing import List, Union, Optional
+from pydantic import BaseModel, ValidationError, Field
 from datetime import datetime
 import requests
 import os
@@ -58,6 +58,38 @@ class VerifiableCredential(BaseModel):
     issue_date: datetime
     content: Union[AllergyContent, MedicationContent, DiagnosisContent]
 
+class MedicationRecord(BaseModel):
+    type: str
+    date_from: str
+    date_to: str
+    present_url: str
+
+
+# Cyclic data for demonstration
+record_types = ["MedicationRecord", "DiagnosisRecord", "AllergyRecord"]
+demo_dates = [
+    (datetime(2021, 1, 1), datetime(2022, 12, 31)),
+    (datetime(2022, 1, 1), None),  # date_to is None for demonstration purposes
+    (datetime(2023, 1, 1), datetime(2024, 12, 31)),
+    (None, None),
+
+]
+current_type_index = -1
+current_date_index = -1
+
+class DynamicRecord(BaseModel):
+    type: str
+    date_from: Optional[datetime] = None
+    date_to: Optional[datetime] = None
+    present_url: str
+
+class Record(BaseModel):
+    type: str
+    date_from: datetime = Field(default_factory=datetime.now)
+    date_to: Optional[datetime] = Field(default_factory=datetime.now)
+    present_url: str
+
+
 # Route to handle presentation of Verifiable Credentials
 @app.post("/present")
 def presentation(vcs: List[VerifiableCredential]):
@@ -76,6 +108,24 @@ def presentation(vcs: List[VerifiableCredential]):
 
     created_vc = create_item_in_collection(token, "vcs", json_output)
     return {"message": "Verifiable Credentials presented successfully!", "data": created_vc}
+
+@app.get("/doctorRequest")
+def get_doctorRequest():
+    global current_type_index, current_date_index
+    current_type_index = (current_type_index + 1) % len(record_types)
+    current_date_index = (current_date_index + 1) % len(demo_dates)
+
+    record_type = record_types[current_type_index]
+    date_from, date_to = demo_dates[current_date_index]
+
+    record_data = {
+        "type": record_type,
+        "date_from": date_from.isoformat() if date_from else None,
+        "date_to": date_to.isoformat() if date_to else None,
+        "present_url": f"{os.getenv('DIRECTUS_URL', 'http://localhost:8055')}/present",
+    }
+
+    return record_data
 
 # Utility function for local development and testing
 if __name__ == "__main__":
