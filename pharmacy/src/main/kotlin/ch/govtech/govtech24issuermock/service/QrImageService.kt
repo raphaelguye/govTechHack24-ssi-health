@@ -34,7 +34,7 @@ class QrImageService(@Value("\${present-endpoint-base-url}") var url: String,) {
     }
 
     fun generateQrForPrContent(id: String): String {
-        val toEndode = url + "/api/pharmacy/medication/pr/" + id
+        val toEndode = url + "/api/pharmacy/pr/" + id
         return generateQRCodeBase64(toEndode, 300, 300)!!
     }
 }
