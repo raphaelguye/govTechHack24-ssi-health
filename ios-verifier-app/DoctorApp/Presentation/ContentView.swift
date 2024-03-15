@@ -21,9 +21,47 @@ struct ContentView: View {
 
   @StateObject private var viewModel: ContentViewModel
   @State private var selectedCredential: Credential?
+  @State private var opacity = 0.0
+  @State private var opacityProgressView = 0.0
+  @State private var isLoading = false
 
   @ViewBuilder
   private func content() -> some View {
+    if viewModel.verifableCredentialsByMonth.isEmpty {
+      HStack {
+        Spacer()
+        VStack {
+          Button("Refresh") {
+            isLoading = true
+            Task {
+              viewModel.refresh()
+            }
+          }.padding(.top, 70)
+          if isLoading {
+            ProgressView()
+              .opacity(opacityProgressView)
+              .animation(.easeInOut(duration: 0.3), value: opacityProgressView)
+              .onAppear {
+                opacityProgressView = 1.0
+              }
+          }
+          Spacer()
+        }
+        Spacer()
+      }
+    } else {
+      medicalPatientView()
+        .opacity(opacity)
+        .animation(.easeInOut(duration: 0.5), value: opacity)
+        .onAppear {
+          opacity = 1.0
+          isLoading = false
+        }
+
+    }
+  }
+
+  private func medicalPatientView() -> some View {
     VStack {
       HeaderView().padding(EdgeInsets(.init(top: 70, leading: 60, bottom: 0, trailing: 0)))
       patientHistoryView().padding(.top, 50)

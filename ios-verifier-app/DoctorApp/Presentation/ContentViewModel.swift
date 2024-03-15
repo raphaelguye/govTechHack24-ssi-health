@@ -7,11 +7,14 @@ class ContentViewModel: ObservableObject {
   // MARK: Lifecycle
 
   init() {
-    verifableCredentialsByMonth = loadVerifiableCredentials()
   }
 
   init(verifableCredentialsByMonth: [String: [Credential]]) {
     self.verifableCredentialsByMonth = verifableCredentialsByMonth
+  }
+
+  func refresh() {
+    verifableCredentialsByMonth = loadVerifiableCredentials()
   }
 
   // MARK: Internal
