@@ -8,8 +8,8 @@ import os
 app = FastAPI()
 
 # Use environment variables for sensitive information
-DIRECTUS_URL = os.getenv("DIRECTUS_URL", "http://localhost:8055")
-EMAIL = os.getenv("EMAIL", "admin@example.com")
+DIRECTUS_URL = os.getenv("DIRECTUS_URL", "https://directustesting.proudcoast-33470e41.switzerlandnorth.azurecontainerapps.io")
+EMAIL = os.getenv("EMAIL", "admin@admin.com")
 PASSWORD = os.getenv("PASSWORD", "d1r3ctu5")
 
 # Authentication function

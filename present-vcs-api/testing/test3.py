@@ -2,8 +2,8 @@ import requests
 from datetime import datetime
 
 # Directus credentials and URL
-directus_url = "http://localhost:8055"
-email = "admin@example.com"
+directus_url = "https://directustesting.proudcoast-33470e41.switzerlandnorth.azurecontainerapps.io"
+email = "admin@admin.com"
 password = "d1r3ctu5"
 
 def authenticate_directus(directus_url, email, password):
