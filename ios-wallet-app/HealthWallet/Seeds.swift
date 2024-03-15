@@ -11,7 +11,7 @@ final class Seeds {
 
       for i in 1...50 {
         let entry = CredentialType.allowedCases[Int.random(in: 0..<CredentialType.allowedCases.count)]
-        let credential = Credential(type: entry, issuedAt: .randomBetween(start: .parse("2020-01-01"), end: .now))
+        let credential = Credential(type: entry)
         container.mainContext.insert(credential)
       }
 
