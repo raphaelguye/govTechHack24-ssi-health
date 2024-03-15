@@ -7,7 +7,9 @@ class ContentViewModel: ObservableObject {
   // MARK: Lifecycle
 
   init() {
-    verifableCredentialsByMonth = loadVerifiableCredentials()
+//    Task {
+//      try await refresh()
+//    }
   }
 
   init(verifableCredentialsByMonth: [String: [Credential]]) {
@@ -17,6 +19,16 @@ class ContentViewModel: ObservableObject {
   // MARK: Internal
 
   @Published var verifableCredentialsByMonth: [String: [Credential]] = [:]
+
+  func refresh() async throws {
+    guard let token = try await getAuthenticationToken() else {
+      verifableCredentialsByMonth = [:]
+      return
+    }
+    try await verifableCredentialsByMonth = getVerifiableCredentials(token: token)
+//    verifableCredentialsByMonth = loadVerifiableCredentials()
+
+  }
 
   // MARK: Private
 
@@ -38,30 +50,67 @@ class ContentViewModel: ObservableObject {
     }
   }
 
-  private func getVerifiableCredentials() async throws -> [String: [Credential]] {
-    let urlString = "https://spring-springbackend-rla.test.azuremicroservices.io/govtech24-springbackend/default/api/v1/mock/vc/medical"
+  private func getAuthenticationToken() async throws -> String? {
+    let urlString = "https://directustesting.proudcoast-33470e41.switzerlandnorth.azurecontainerapps.io/auth/login"
+    guard let url = URL(string: urlString) else {
+      return nil
+    }
+    let username = "admin@admin.com"
+    let password = "d1r3ctu5"
+
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+    let payload: [String: String] = ["email": username, "password": password]
+    guard let httpBody = try? JSONSerialization.data(withJSONObject: payload, options: []) else {
+      return nil
+    }
+    request.httpBody = httpBody
+
+    let (data, response) = try await URLSession.shared.data(for: request)
+    guard
+      let httpResponse = response as? HTTPURLResponse,
+      httpResponse.statusCode == 200 else
+    {
+      return nil
+    }
+
+    guard
+      let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+      let dataObject = jsonObject["data"] as? [String: Any],
+      let accessToken = dataObject["access_token"] as? String else
+    {
+      return nil
+    }
+
+    return accessToken
+
+  }
+
+  private func getVerifiableCredentials(token: String) async throws -> [String: [Credential]] {
+    let urlString = "https://directustesting.proudcoast-33470e41.switzerlandnorth.azurecontainerapps.io/items/vcs"
     guard let url = URL(string: urlString) else {
       throw URLError(.badURL)
     }
 
     var request = URLRequest(url: url)
     request.httpMethod = "GET"
-
-    let loginString = "primary:yI0LPJwOF5HqwHC3LnICdX5b6sqXIw2RppFNkWa2l1NuiAfAVMb9IeH6iPIC5o3F"
-    guard let loginData = loginString.data(using: .utf8) else {
-      throw URLError(.userAuthenticationRequired)
-    }
-    let base64LoginString = loginData.base64EncodedString()
-
-    request.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
+    request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
     let (data, _) = try await URLSession.shared.data(for: request)
 
     let decoder = JSONDecoder()
     decoder.dateDecodingStrategy = .iso8601
 
-    let credentials = try decoder.decode([Credential].self, from: data)
-    return groupByMonth(credentials)
+    do {
+      let fetchCredentialResponse = try decoder.decode(FetchCredentialResponse.self, from: data)
+      let credentials = fetchCredentialResponse.data.last?.credential ?? []
+      return groupByMonth(credentials)
+    } catch {
+      print(error)
+      return [:]
+    }
   }
 
   private func groupByMonth(_ credentials: [Credential]) -> [String: [Credential]] {

@@ -8,7 +8,7 @@ final class Credential: Identifiable, Codable {
 
   // MARK: Lifecycle
 
-  init(id: UUID = .init(), name: String, type: CredentialType, issuedAt: Date = Date(), content: [String: String] = [:]) {
+  init(id: String = UUID().uuidString, name: String, type: CredentialType, issuedAt: Date = Date(), content: [String: String] = [:]) {
     self.id = id
     self.type = type
     self.issuedAt = issuedAt
@@ -17,7 +17,7 @@ final class Credential: Identifiable, Codable {
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    id = try container.decode(UUID.self, forKey: .id)
+    id = try container.decode(String.self, forKey: .id)
     type = try container.decode(CredentialType.self, forKey: .type)
     issuedAt = try container.decode(Date.self, forKey: .issuedAt)
 
@@ -44,7 +44,7 @@ final class Credential: Identifiable, Codable {
 
   // MARK: Internal
 
-  var id: UUID
+  var id: String
   var type: CredentialType
   var issuedAt: Date
   let content: [String: String]
@@ -79,7 +79,7 @@ final class Credential: Identifiable, Codable {
   private enum CodingKeys: String, CodingKey {
     case id
     case type
-    case issuedAt = "issueDate"
+    case issuedAt = "issue_date"
     case content
   }
 

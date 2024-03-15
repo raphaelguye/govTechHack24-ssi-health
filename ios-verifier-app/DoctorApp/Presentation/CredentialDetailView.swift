@@ -89,7 +89,7 @@ struct CredentialDetailView: View {
 struct CredentialDetailView_Previews: PreviewProvider {
   static var previews: some View {
     // Use a sample credential for preview
-    CredentialDetailView(credential: Credential(id: UUID(), name: "Sample Credential", type: .insurance))
+    CredentialDetailView(credential: Credential(id: UUID().uuidString, name: "Sample Credential", type: .insurance))
   }
 }
 
