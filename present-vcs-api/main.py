@@ -2,8 +2,43 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from datetime import datetime
 from typing import List, Union
+import requests
 
 app = FastAPI()
+
+# Directus credentials and URL
+directus_url = "http://localhost:8055"
+email = "admin@example.com"
+password = "d1r3ctu5"
+
+def authenticate_directus(directus_url, email, password):
+    auth_endpoint = f"{directus_url}/auth/login"
+    payload = {
+        "email": email,
+        "password": password
+    }
+    headers = {
+        "Content-Type": "application/json"
+    }
+    response = requests.post(auth_endpoint, json=payload, headers=headers)
+    if response.status_code == 200:
+        data = response.json()
+        return data['data']['access_token']
+    else:
+        raise Exception("Authentication failed", response.text)
+
+def create_item_in_collection(token, directus_url, collection_name, item_data):
+    create_endpoint = f"{directus_url}/items/{collection_name}"
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Content-Type": "application/json"
+    }
+    response = requests.post(create_endpoint, json=item_data, headers=headers)
+    if response.status_code in [200, 201]:
+        data = response.json()
+        return data['data']
+    else:
+        raise Exception("Failed to create item", response.text)
 
 # Pydantic models for structured request and response bodies
 class AllergyContent(BaseModel):
@@ -30,14 +65,75 @@ class VerifiableCredential(BaseModel):
     issue_date: datetime
     content: HealthRecordContent
 
+# def transform_payload(vcs_list):
+#     transformed_payload = {
+#         'vc': [
+#             {
+#                 'id': vc['id'],
+#                 'type': vc['type'],
+#                 'issue_date': vc['issue_date'],
+#                 'content': vc['content']
+#             } for vc in vcs_list
+#         ]
+#     }
+#     return transformed_payload
+
+def transform_payload(vcs: List[VerifiableCredential]) -> dict:
+    transformed_payload = {
+        'vc': [
+            {
+                'id': vc.id,
+                'type': vc.type,
+                'issue_date': vc.issue_date.isoformat(),
+                'content': vc.content.dict() if hasattr(vc.content, 'dict') else vc.content
+            } for vc in vcs
+        ]
+    }
+    return transformed_payload
+
 # Route to handle presentation
 @app.post('/present')
 def presentation(vcs: List[VerifiableCredential]):
-    for vc in vcs:
-        print_vc(vc)
-        # Your logic to handle each VerifiableCredential, e.g., save_to_cms(vc)
+    #
+    # print(vcs)
+    # data = [
+    #     {
+    #         "id": "vc-1",
+    #         "type": "AllergyRecord",
+    #         "issue_date": datetime.now().isoformat(),
+    #         "content": {
+    #             "allergy_code": "A001",
+    #             "allergy_description": "Pollen Allergy",
+    #             "reaction_code": "R102",
+    #             "severity": "High"
+    #         }
+    #     },
+    #     {
+    #         "id": "vc-2",
+    #         "type": "MedicationRecord",
+    #         "issue_date": datetime.now().isoformat(),
+    #         "content": {
+    #             "medication_code": "M002",
+    #             "medication_name": "Aspirin",
+    #             "dosage_instruction": "Take one tablet daily"
+    #         }
+    #     }
+    # ]
+    # print(data)
+    #
+    token = authenticate_directus(directus_url, email, password)
 
-    return {"message": "Verifiable Credentials erfolgreich erhalten und verarbeitet"}
+    json_output = transform_payload(vcs)
+
+    # Erstelle den Eintrag in der 'vcs' Sammlung mit einer eindeutigen ID
+    created_vc = create_item_in_collection(token, directus_url, "vcs", json_output)
+    print(created_vc)
+
+    # for vc in vcs:
+    #     print_vc(vc)
+    #     # Your logic to handle each VerifiableCredential, e.g., save_to_cms(vc)
+
+    return {"message": "Verifiable Credentials presented successfully!"}
 
 # Function to print VC details - slightly adjusted for FastAPI
 def print_vc(vc_instance: VerifiableCredential):
