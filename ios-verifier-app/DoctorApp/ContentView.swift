@@ -13,7 +13,8 @@ struct ContentView: View {
 
   // MARK: Private
 
-  private var viewModel = ContentViewModel()
+  @StateObject private var viewModel = ContentViewModel()
+  @State private var selectedCredential: Credential?
 
   @ViewBuilder
   private func content() -> some View {
@@ -21,6 +22,9 @@ struct ContentView: View {
       HeaderView().padding(EdgeInsets(.init(top: 70, leading: 70, bottom: 0, trailing: 0)))
       patientHistoryView().padding(.top, 50)
       Spacer()
+    }
+    .sheet(item: $selectedCredential) { credential in
+      CredentialDetailView(credential: credential)
     }
     .padding(0)
   }
@@ -42,6 +46,9 @@ struct ContentView: View {
                   ForEach(viewModel.verifableCredentialsByMonth[key] ?? [], id: \.id) { credential in
                     CredentialCard(credential: credential)
                       .padding(.leading, 20)
+                      .onTapGesture {
+                        selectedCredential = credential
+                      }
                   }
                 }
               }

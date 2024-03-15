@@ -17,7 +17,7 @@ struct HeaderView: View {
         .font(.system(size: 80, weight: .ultraLight))
 
       VStack(alignment: .leading) {
-        Text("John Doo")
+        Text("John Doe")
           .font(.title)
         HStack {
           Text("Insurance:").bold()
@@ -42,18 +42,18 @@ struct HeaderView: View {
         }
       }
 
-      VStack(alignment: .leading) {
-        Text(" ")
-          .font(.title)
-        HStack {
-          Text("Adress:").bold()
-          Text("Schlossstrasse 12")
-        }
-        HStack {
-          Text("Locality:").bold()
-          Text("Bern")
-        }
-      }
+//      VStack(alignment: .leading) {
+//        Text(" ")
+//          .font(.title)
+//        HStack {
+//          Text("Adress:").bold()
+//          Text("Schlossstrasse 12")
+//        }
+//        HStack {
+//          Text("Locality:").bold()
+//          Text("Bern")
+//        }
+//      }
       Spacer()
     }
   }
