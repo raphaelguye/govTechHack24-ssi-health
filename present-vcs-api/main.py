@@ -66,14 +66,20 @@ class MedicationRecord(BaseModel):
 
 
 # Cyclic data for demonstration
-record_types = ["MedicationRecord", "DiagnosisRecord", "AllergyRecord"]
+record_types = ["Medication", "Diagnosis", "AllergyInteolerance"]
+
 demo_dates = [
     (datetime(2021, 1, 1), datetime(2022, 12, 31)),
     (datetime(2022, 1, 1), None),  # date_to is None for demonstration purposes
     (datetime(2023, 1, 1), datetime(2024, 12, 31)),
-    (None, None),
-
+    (None, None),  # Both dates are None
 ]
+
+# Converting datetime objects to ISO format and handling None values
+iso_dates = [
+    (start.isoformat() + "Z" if start else None, end.isoformat() + "Z" if end else None) for start, end in demo_dates
+]
+
 current_type_index = -1
 current_date_index = -1
 
@@ -113,15 +119,15 @@ def presentation(vcs: List[VerifiableCredential]):
 def get_doctorRequest():
     global current_type_index, current_date_index
     current_type_index = (current_type_index + 1) % len(record_types)
-    current_date_index = (current_date_index + 1) % len(demo_dates)
+    current_date_index = (current_date_index + 1) % len(iso_dates)
 
     record_type = record_types[current_type_index]
-    date_from, date_to = demo_dates[current_date_index]
+    date_from, date_to = iso_dates[current_date_index]
 
     record_data = {
         "type": record_type,
-        "date_from": date_from.isoformat() if date_from else None,
-        "date_to": date_to.isoformat() if date_to else None,
+        "date_from": date_from if date_from else None,
+        "date_to": date_to if date_to else None,
         "present_url": f"{os.getenv('DIRECTUS_URL', 'https://directustesting.proudcoast-33470e41.switzerlandnorth.azurecontainerapps.io')}/present",
     }
 
