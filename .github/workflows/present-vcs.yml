@@ -22,7 +22,7 @@ jobs:
           service_principal_password: ${{ secrets.service_principal_password }}
           tenant: 5f26d32c-f4e7-4168-bc6d-212851f1a9eb
           image: gt-vcs-api
-          branch: vcs-api
+          branch: master
           repository: vcs
           folder: ./present-vcs-api
           registry: acrgovtech24
