@@ -122,7 +122,7 @@ def get_doctorRequest():
         "type": record_type,
         "date_from": date_from.isoformat() if date_from else None,
         "date_to": date_to.isoformat() if date_to else None,
-        "present_url": f"{os.getenv('DIRECTUS_URL', 'http://localhost:8055')}/present",
+        "present_url": f"{os.getenv('DIRECTUS_URL', 'https://directustesting.proudcoast-33470e41.switzerlandnorth.azurecontainerapps.io')}/present",
     }
 
     return record_data
