@@ -2,6 +2,8 @@ package ch.govtech.govtech24issuermock
 
 import ch.govtech.govtech24issuermock.model.Medication
 import ch.govtech.govtech24issuermock.service.MockDataService
+import ch.govtech.govtech24issuermock.service.ProofRequestService
+import ch.govtech.govtech24issuermock.service.QrImageService
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
@@ -10,7 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping
 
 @Controller
 @RequestMapping("/pharmacy")
-class PharmacyController(val mockDataService: MockDataService) {
+class PharmacyController(val mockDataService: MockDataService, val proofRequestService: ProofRequestService, val qrImageService: QrImageService) {
+
+    @GetMapping()
+    fun showWelcomePage(model: Model): Any {
+        var createNewProofRequest = proofRequestService.createNewProofRequest()
+        model.addAttribute("imageBase64", qrImageService.generateQrForPrContent(createNewProofRequest.id))
+        return "welcome"
+    }
+
     @GetMapping("/medications")
     fun showMedications(model: Model): Any {
         // Assuming you have a method to fetch JSON data and parse it into a List<Medication>

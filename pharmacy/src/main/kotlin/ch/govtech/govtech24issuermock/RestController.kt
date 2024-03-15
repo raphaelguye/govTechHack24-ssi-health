@@ -7,17 +7,24 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/api/present/medication")
+@RequestMapping("/api/pharmacy")
 class RestController(val proofRequestService: ProofRequestService) {
 
     init {
         println("test")
     }
+
     @GetMapping("/create-pr")
     fun createProofRequest(): ProofRequestContent {
-        return proofRequestService.createNewProofRequest()
+        return proofRequestService.createNewProofRequest().content
     }
-    @PostMapping("/{id}")
+
+    @GetMapping("/pr/{id}")
+    fun createProofRequest(@PathVariable id: String): ProofRequestContent {
+        return proofRequestService.createNewProofRequest().content
+    }
+
+    @PostMapping("/medication/{id}")
     fun presentMedicationVc(@PathVariable id: String, @RequestBody medications: List<Medication>) {
         proofRequestService.submitResponse(id, medications)
     }

@@ -12,16 +12,16 @@ class ProofRequestService(
     val proofRepository: ProofRepository,
     val medicationRepository: MedicationRepository,
 ) {
-    fun createNewProofRequest(): ProofRequestContent {
+    fun createNewProofRequest(): ProofRequest {
         val prId = UUID.randomUUID().toString()
         var prc = ProofRequestContent(
             ZonedDateTime.now().minusMonths(2),
             ZonedDateTime.now().minusDays(1),
             "Medication",
-            url + "/api/present/medication/" + prId
+            url + "/api/pharmacy/medication/" + prId
         )
         val pr = ProofRequest(prId, prc, mutableListOf())
-        return proofRepository.save(pr).content;
+        return proofRepository.save(pr);
     }
 
     fun submitResponse(id: String, medications: List<Medication>): ProofRequestContent {
@@ -31,5 +31,9 @@ class ProofRequestService(
         }
         pr.responses.addAll(medications)
         return proofRepository.save(pr).content
+    }
+
+    fun getById(id: String): ProofRequestContent {
+        return proofRepository.findById(id).get().content
     }
 }

@@ -1,5 +1,6 @@
 package ch.govtech.govtech24issuermock.model
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import jakarta.persistence.Embedded
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
@@ -9,10 +10,10 @@ import java.time.ZonedDateTime
 import java.util.UUID
 
 data class ProofRequestContent(
-    var issuedFrom: ZonedDateTime?,
-    val issuedTo: ZonedDateTime?,
+    @JsonProperty("date_from") var issuedFrom: ZonedDateTime?,
+    @JsonProperty("date_to") val issuedTo: ZonedDateTime?,
     val type: String?,
-    val presentationUrl: String
+    @JsonProperty("present_url") val presentationUrl: String
 ) {
 
     constructor() : this(null, null, null, "")
