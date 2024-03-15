@@ -45,8 +45,8 @@ dependencies {
         annotationProcessor("org.projectlombok:lombok")
         implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
         testImplementation("org.springframework.boot:spring-boot-starter-test")
-        implementation("com.google.zxing:core:3.4.1")
-        implementation("com.google.zxing:zxing-javaee:3.4.1")
+//        implementation("com.google.zxing:core:3.4.1")
+//        implementation("com.google.zxing:zxing-javaee:3.4.1")
     }
 }
 dependencyManagement {
