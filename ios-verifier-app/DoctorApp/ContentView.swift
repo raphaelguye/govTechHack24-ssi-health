@@ -4,6 +4,12 @@ import SwiftUI
 
 struct ContentView: View {
 
+  // MARK: Lifecycle
+
+  init(viewModel: ContentViewModel) {
+    _viewModel = StateObject(wrappedValue: viewModel)
+  }
+
   // MARK: Internal
 
   var body: some View {
@@ -13,7 +19,7 @@ struct ContentView: View {
 
   // MARK: Private
 
-  @StateObject private var viewModel = ContentViewModel()
+  @StateObject private var viewModel: ContentViewModel
   @State private var selectedCredential: Credential?
 
   @ViewBuilder
@@ -41,16 +47,21 @@ struct ContentView: View {
                 .font(.headline)
                 .padding(.bottom, 20)
                 .padding(.leading, 20)
-              ScrollView {
-                VStack(spacing: 20) {
+              VStack(spacing: 0) {
+                let credentials = viewModel.verifableCredentialsByMonth[key] ?? []
+                let columns = Array(
+                  repeating: GridItem(.flexible(), spacing: 20),
+                  count: max(1, Int(ceil(Double(credentials.count) / 3.0))))
+                LazyVGrid(columns: columns, spacing: 20) {
                   ForEach(viewModel.verifableCredentialsByMonth[key] ?? [], id: \.id) { credential in
                     CredentialCard(credential: credential)
-                      .padding(.leading, 20)
                       .onTapGesture {
                         selectedCredential = credential
                       }
                   }
                 }
+                .padding(.horizontal)
+                Spacer()
               }
             }
           }
@@ -110,6 +121,16 @@ extension String {
 }
 
 #Preview {
-  ContentView()
+  ContentView(
+    viewModel: ContentViewModel(verifableCredentialsByMonth: [
+      "2024-02": [Credential.sample(), Credential.sample(), Credential.sample(), Credential.sample(), Credential.sample()],
+    ]))
+}
 
+#Preview {
+  ContentView(
+    viewModel: ContentViewModel(verifableCredentialsByMonth: [
+      "2024-02": [Credential.sample(), Credential.sample(), Credential.sample(), Credential.sample()],
+      "2024-03": [Credential.sample()],
+    ]))
 }

@@ -10,6 +10,10 @@ class ContentViewModel: ObservableObject {
     verifableCredentialsByMonth = loadVerifiableCredentials()
   }
 
+  init(verifableCredentialsByMonth: [String: [Credential]]) {
+    self.verifableCredentialsByMonth = verifableCredentialsByMonth
+  }
+
   // MARK: Internal
 
   @Published var verifableCredentialsByMonth: [String: [Credential]] = [:]
