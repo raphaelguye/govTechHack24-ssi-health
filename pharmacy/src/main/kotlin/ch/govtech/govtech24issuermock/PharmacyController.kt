@@ -19,6 +19,7 @@ class PharmacyController(val mockDataService: MockDataService, val proofRequestS
     fun showWelcomePage(model: Model): Any {
         var createNewProofRequest = proofRequestService.createNewProofRequest()
         model.addAttribute("imageBase64", qrImageService.generateQrForPrContent(createNewProofRequest.id))
+        model.addAttribute("prId", createNewProofRequest.id)
         return "welcome"
     }
 
