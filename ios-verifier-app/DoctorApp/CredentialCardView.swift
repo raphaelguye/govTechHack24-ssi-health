@@ -86,10 +86,5 @@ struct CredentialCard: View {
 }
 
 #Preview {
-  CredentialCard(credential: Credential(name: "test", type: .allergy, content: [
-    "allergyCode": "L50.0",
-    "allergyDescription": "UrtikariaUrtikaria UrtikariaUrtikariaUrtikaria Urtikaria",
-    "reactionCode": "R20",
-    "severity": "3",
-  ]))
+  CredentialCard(credential: Credential.sample())
 }

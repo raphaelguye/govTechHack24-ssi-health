@@ -121,6 +121,17 @@ enum CredentialType: String, Codable, CaseIterable {
   }
 }
 
+extension Credential {
+  static func sample() -> Credential {
+    .init(name: "test", type: .allergy, content: [
+      "allergyCode": "L50.0",
+      "allergyDescription": "UrtikariaUrtikaria UrtikariaUrtikariaUrtikaria Urtikaria",
+      "reactionCode": "R20",
+      "severity": "3",
+    ])
+  }
+}
+
 // MARK: - DynamicCodingKeys
 
 fileprivate struct DynamicCodingKeys: CodingKey {
